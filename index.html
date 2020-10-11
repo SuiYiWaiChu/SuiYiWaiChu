@@ -26,7 +26,7 @@
         <div id="time" class="time"></div>
         <div class="avatar">
             <div class="wrapper">
-                <div class="text">批准出校</div>
+                <div id="approve" class="text">批准出校</div>
                 <i class="fa fa-check fa-5x"></i>
             </div>
         </div>
@@ -49,10 +49,12 @@
             no,
             name,
             img,
+            out,
         } = URLParameter
         document.getElementById('no').innerText = no || 201700800240
-        document.getElementById('name').innerText = decodeURI(name) || '王馨怡'
+        document.getElementById('name').innerText = name ? decodeURI(name) : '王馨怡'
         document.getElementById('photo').src = img
+        document.getElementById('approve').innerText = out ? '批准出校' : '批准入校'
     </script>
 </body>
 
