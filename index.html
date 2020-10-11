@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山东大学 (威海)</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo" src="img/logo.png" src="">
+    </div>
+    <div class="info">
+        <img id="photo" class="photo">
+        <div class="student">
+            <div class="row"><span class="strong">学号:</span> <span id="no"></span></div>
+            <div class="row"><span class="strong">姓名:</span> <span id="name"></span></div>
+            <div class="row"><span class="strong">学院:</span> 机电与信息工程学院</div>
+            <div class="row"><span class="strong">年级:</span> 2017</div>
+        </div>
+    </div>
+    <div class="content">
+        <div id="time" class="time"></div>
+        <div class="avatar">
+            <div class="wrapper">
+                <div class="text">批准出校</div>
+                <i class="fa fa-check fa-5x"></i>
+            </div>
+        </div>
+        <div class="footer">请在60秒内出示此通行页面给工作人员!</div>
+    </div>
+    <script type="text/javascript">
+        // datetime
+        const date = new Date();
+        const datetime = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+        document.getElementById('time').innerText = datetime
+
+        // student info from URL
+        const URLParameter = {}
+        for (const pair of window.location.search.replace('?', '').split('&')) {
+            let [key, value] = pair.split('=')
+            key = key.toLowerCase()
+            URLParameter[key] = value
+        }
+        const {
+            no,
+            name,
+            img,
+        } = URLParameter
+        document.getElementById('no').innerText = no || 201700800240
+        document.getElementById('name').innerText = decodeURI(name) || '王馨怡'
+        document.getElementById('photo').src = img
+    </script>
+</body>
+
+</html>
