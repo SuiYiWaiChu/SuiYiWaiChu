@@ -34,9 +34,15 @@
     </div>
     <script type="text/javascript">
         // datetime
-        const date = new Date();
-        const datetime = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
-        document.getElementById('time').innerText = datetime
+        function setDateTime() {
+            const date = new Date();
+            const datetime = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+            document.getElementById('time').innerText = datetime
+        }
+        setDateTime()
+        setInterval(() => {
+            setDateTime()
+        }, 1000)
 
         // student info from URL
         const URLParameter = {}
